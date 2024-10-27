@@ -55,7 +55,7 @@ Se trata de un proyecto pequeño con lo necesario para funcionar por si solo.
 | name   | ERole   | Tipo de rol (ROLE_USUARIO, ROLE_MODERADOR) |
 
 
-### BoosterPack
+### Card
 
 | Campo        | Tipo      | Descripción                            |
 |--------------|-----------|----------------------------------------|
@@ -69,6 +69,14 @@ Se trata de un proyecto pequeño con lo necesario para funcionar por si solo.
 
 
 
+### BoosterPack
+
+| Campo        | Tipo        | Descripción                             |
+|--------------|-------------|-----------------------------------------|
+| id           | String      | Identificador único                     |
+| name         | String      | Nombre del paquete de cartas            |
+| image        | String      | URL de la imagen del paquete            |
+| cardList     | List<Card>  | Lista de cartas incluidas en el paquete |
 
 
 
@@ -96,7 +104,7 @@ Se trata de un proyecto pequeño con lo necesario para funcionar por si solo.
 | GET           | /booster/getPack/{name}            | Obtener un paquete por su nombre           |name: Nombre del paquete |
 
 
-### BoosterPack Endpoints
+### User Endpoints
 
 | Método        | Endpoint                           | Descripción                            | Parámetros                   |
 |---------------|------------------------------------|----------------------------------------|------------------------------|
