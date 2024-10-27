@@ -9,4 +9,6 @@ public interface ICardService {
     Card getCard(String name);
     List<Card> getAllCards();
     void deleteCard(String name);
+
+    Card updateCard(String name, String image, String rarity, String color, int dp, String boosterPack);
 }

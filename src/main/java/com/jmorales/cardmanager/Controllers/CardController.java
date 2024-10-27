@@ -50,6 +50,7 @@ public class CardController {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
         }
     }
+    
 
     @DeleteMapping("/deleteCard/{card}")
     public ResponseEntity<?> deleteCard(@PathVariable("card") String card){
@@ -57,6 +58,21 @@ public class CardController {
             cardService.deleteCard(card);
             return ResponseEntity.ok("Carta eliminado");
         }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
+        }
+    }
+
+    @PutMapping("/updateCard/{name}")
+    public ResponseEntity<?> updateCard(@PathVariable("name") String name,
+                                        @RequestParam("image") String image,
+                                        @RequestParam("rareza") String rareza,
+                                        @RequestParam("color") String color,
+                                        @RequestParam("dp") int dp,
+                                        @RequestParam("boosterPack") String boosterPack) {
+        try {
+            cardService.updateCard(name, image, rareza, color, dp, boosterPack);
+            return ResponseEntity.ok("Carta actualizada");
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
         }
     }

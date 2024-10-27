@@ -120,4 +120,39 @@ public class CardServiceTest {
         });
     }
 
+
+    @Test
+    void updateExistingCardUpdatesCard() {
+        String name = "Carta1";
+        Card existingCard = new Card();
+        existingCard.setName(name);
+        existingCard.setImage("oldImage.png");
+        existingCard.setRarity("common");
+        existingCard.setColor("red");
+        existingCard.setDp(5);
+        existingCard.setBoosterPack("booster1");
+
+        Mockito.when(cardRepository.findByName(name)).thenReturn(Optional.of(existingCard));
+        Mockito.when(cardRepository.save(Mockito.any(Card.class))).thenReturn(existingCard);
+
+        Card result = cardService.updateCard(name, "newImage.png", "rare", "blue", 10, "booster2");
+
+        Assertions.assertEquals("newImage.png", result.getImage());
+        Assertions.assertEquals("rare", result.getRarity());
+        Assertions.assertEquals("blue", result.getColor());
+        Assertions.assertEquals(10, result.getDp());
+        Assertions.assertEquals("booster2", result.getBoosterPack());
+    }
+
+    @Test
+    void updateNonExistingCardThrowsException() {
+        String name = "NonExistingCard";
+
+        Mockito.when(cardRepository.findByName(name)).thenReturn(Optional.empty());
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            cardService.updateCard(name, "newImage.png", "rare", "blue", 10, "booster2");
+        });
+    }
+
 }

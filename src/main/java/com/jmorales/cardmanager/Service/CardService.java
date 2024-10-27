@@ -63,4 +63,24 @@ public class CardService implements ICardService{
             throw new IllegalArgumentException("Carta no existente");
         }
     }
+
+    @Override
+    public Card updateCard(String name, String image, String rarity, String color, int dp, String boosterPack) {
+        Optional<Card> optionalCard = cardRepository.findByName(name);
+        if (optionalCard.isPresent()) {
+            Card card = optionalCard.get();
+            card.setImage(image);
+            card.setRarity(rarity);
+            card.setColor(color);
+            card.setDp(dp);
+            card.setBoosterPack(boosterPack);
+
+            cardRepository.save(card);
+            return card;
+        } else {
+            throw new IllegalArgumentException("Carta no existente");
+        }
+    }
+
+
 }
