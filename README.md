@@ -4,13 +4,6 @@
 Esta es una API RESTful desarrollada con Spring Boot y MongoDB que permite gestionar una colección de cartas (`Card`), paquetes de cartas (`BoosterPack`), y usuarios con roles específicos (`User` y `Role`). Los endpoints permiten crear, leer, actualizar y eliminar cartas y paquetes, y gestionar la autenticación de usuarios con roles predefinidos.
 Se trata de un proyecto pequeño con lo necesario para funcionar por si solo.
 
-## Tecnologías utilizadas
-- **Java 17+**
-- **Spring Boot 3+**
-- **Spring Security** para gestión de roles y permisos de usuario
-- **Maven** como sistema de gestión de dependencias
-- **JUnit 5** y **Mockito** para pruebas unitarias
-
 ## Configuración del proyecto
 
 ### Prerrequisitos
